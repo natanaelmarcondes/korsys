@@ -8,6 +8,14 @@ Begin VB.Form frmLogin
    LinkTopic       =   "Form1"
    ScaleHeight     =   5430
    ScaleWidth      =   7650
+   Begin VB.TextBox Text1 
+      Height          =   630
+      Left            =   2250
+      TabIndex        =   0
+      Text            =   "Text1"
+      Top             =   570
+      Width           =   2085
+   End
 End
 Attribute VB_Name = "frmLogin"
 Attribute VB_GlobalNameSpace = False
