@@ -12,13 +12,13 @@ Begin VB.Form frmLogin
    Begin VB.Timer tmrBloqueio 
       Enabled         =   0   'False
       Interval        =   1000
-      Left            =   9135
-      Top             =   4800
+      Left            =   5775
+      Top             =   6615
    End
    Begin VB.Timer tmrHora 
       Interval        =   1000
-      Left            =   5055
-      Top             =   6570
+      Left            =   795
+      Top             =   4605
    End
    Begin VB.TextBox txtSenha 
       BackColor       =   &H80000004&
@@ -114,6 +114,7 @@ Begin VB.Form frmLogin
    End
    Begin VB.Label lblTime 
       BackStyle       =   0  'Transparent
+      Caption         =   "Data e Hora"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   18
@@ -143,10 +144,10 @@ Begin VB.Form frmLogin
          Strikethrough   =   0   'False
       EndProperty
       Height          =   1065
-      Left            =   3840
+      Left            =   2745
       TabIndex        =   3
       Top             =   885
-      Width           =   3915
+      Width           =   6030
    End
 End
 Attribute VB_Name = "frmLogin"
@@ -218,6 +219,7 @@ Private Sub Form_Load()
     
     'Carregamento instantaneo do timer no Formulário
     lblTime.Caption = Format(Now, "dd/mm/yyyy HH:mm:ss")
+    lblWelcome.Caption = "Bem vindo ao Login KorSys Ver.:" & App.Major & "." & App.Minor
     
 End Sub
 

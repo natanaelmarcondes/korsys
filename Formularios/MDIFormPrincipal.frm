@@ -2,10 +2,10 @@ VERSION 5.00
 Begin VB.MDIForm MDIFormPrincipal 
    BackColor       =   &H8000000C&
    Caption         =   "MDIForm1"
-   ClientHeight    =   7350
+   ClientHeight    =   8685
    ClientLeft      =   60
    ClientTop       =   405
-   ClientWidth     =   11955
+   ClientWidth     =   13755
    LinkTopic       =   "MDIForm1"
    StartUpPosition =   3  'Windows Default
 End
