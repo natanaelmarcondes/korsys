@@ -1,14 +1,17 @@
 VERSION 5.00
 Begin VB.Form frmLogin 
-   Caption         =   "Login"
+   Caption         =   "Login KorSys"
    ClientHeight    =   7560
-   ClientLeft      =   1320
-   ClientTop       =   1305
+   ClientLeft      =   7965
+   ClientTop       =   4275
    ClientWidth     =   11415
    LinkTopic       =   "Form1"
+   MaxButton       =   0   'False
+   MinButton       =   0   'False
    Picture         =   "frmLogin.frx":0000
    ScaleHeight     =   7560
    ScaleWidth      =   11415
+   StartUpPosition =   2  'CenterScreen
    Begin VB.Timer tmrBloqueio 
       Enabled         =   0   'False
       Interval        =   1000
@@ -164,30 +167,42 @@ Dim strSenha As String
 
 Private Sub cmdEntrar_Click()
     
+    
+    'Variaveis de tamanho de texto
+    Dim intLenLogin As Integer
+    Dim intLenSenha As Integer
+    
+    intLenLogin = Len(Trim(txtLogin.Text))
+    intLenSenha = Len(Trim(txtSenha.Text))
+    
+    
     'Check de caixa de login vazia
     If Trim(txtLogin.Text) = "" Then
-        MsgBox "Informe o usuário!", vbExclamation
+        MsgBox "Informe o usuário!", vbInformation
         txtLogin.SetFocus
         Exit Sub
     End If
     
+    
     'Check de caixa de senha vazia
     If Trim(txtSenha.Text) = "" Then
-        MsgBox "Informe a senha!", vbExclamation
+        MsgBox "Informe a senha!", vbInformation
         txtSenha.SetFocus
         Exit Sub
     End If
     
+    
     'Check de usuário correto
     If txtLogin.Text <> strLogin Then
-        MsgBox "Usuário inválido!", vbCritical
+        MsgBox "Usuário inválido!", vbExclamation
         txtLogin.Text = ""
         txtLogin.SetFocus
         intTentativa = intTentativa + 1
     
+    
     'Check de senha correta
     ElseIf txtSenha.Text <> strSenha Then
-        MsgBox "Senha inválida!", vbCritical
+        MsgBox "Senha inválida!", vbExclamation
         txtSenha.Text = ""
         txtSenha.SetFocus
         intTentativa = intTentativa + 1
@@ -207,15 +222,31 @@ Private Sub cmdEntrar_Click()
     End If
     
     
+    'Checar se tem mais de 3 caracteres no username
+    If intLenLogin < 4 Then
+        MsgBox "O Username tem de ter mais de 3 caracteres", vbInformation
+    ElseIf intLenLogin > 15 Then
+        MsgBox "O Username não pode conter mais de 15 caracteres", vbInformation
+    End If
+    
+    
+    'Checar se tem mais de 4 caracteres na senha
+    If intLenSenha < 5 Then
+        MsgBox "A senha tem de ter mais de 4 caracteres", vbInformation
+    ElseIf intLenSenha > 8 Then
+        MsgBox "A senha não pode ter mais de 8 caracteres", vbInformation
+    End If
     
     
 End Sub
 
 Private Sub Form_Load()
- 
+    
+    
     'Carregamento das variaveis
     strLogin = "Admin"
     strSenha = "1234"
+    
     
     'Carregamento instantaneo do timer no Formulário
     lblTime.Caption = Format(Now, "dd/mm/yyyy HH:mm:ss")
@@ -240,6 +271,7 @@ End Sub
 
 Private Sub tmrHora_Timer()
     
+    
     'Atualização da data em tempo real do formulário
     lblTime.Caption = Format(Now, "dd/mm/yyyy HH:mm:ss")
     
@@ -247,6 +279,7 @@ End Sub
 
 
 Private Sub txtLogin_LostFocus()
+    
     
     'Ao perder o foco colocar a primeira letra em maiuscula
     If Trim(txtLogin.Text) <> "" Then
