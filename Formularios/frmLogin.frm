@@ -12,6 +12,24 @@ Begin VB.Form frmLogin
    ScaleHeight     =   7560
    ScaleWidth      =   11415
    StartUpPosition =   2  'CenterScreen
+   Begin VB.CommandButton Command1 
+      BackColor       =   &H8000000E&
+      Caption         =   "Sair"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   13.5
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   675
+      Left            =   9225
+      TabIndex        =   7
+      Top             =   4695
+      Width           =   1590
+   End
    Begin VB.Timer tmrBloqueio 
       Enabled         =   0   'False
       Interval        =   1000
@@ -38,7 +56,7 @@ Begin VB.Form frmLogin
       IMEMode         =   3  'DISABLE
       Left            =   7065
       PasswordChar    =   "*"
-      TabIndex        =   2
+      TabIndex        =   1
       Text            =   "Senha"
       Top             =   3600
       Width           =   3030
@@ -57,7 +75,7 @@ Begin VB.Form frmLogin
       EndProperty
       Height          =   675
       Left            =   7395
-      TabIndex        =   1
+      TabIndex        =   2
       Top             =   4680
       Width           =   1590
    End
@@ -193,12 +211,11 @@ Private Sub cmdEntrar_Click()
     
     
     'Check de usuário correto
-    If txtLogin.Text <> strLogin Then
+    If UCase(txtLogin.Text) <> UCase(strLogin) Then
         MsgBox "Usuário inválido!", vbExclamation
         txtLogin.Text = ""
         txtLogin.SetFocus
         intTentativa = intTentativa + 1
-    
     
     'Check de senha correta
     ElseIf txtSenha.Text <> strSenha Then
@@ -253,9 +270,6 @@ Private Sub Form_Load()
     lblWelcome.Caption = "Bem vindo ao Login KorSys Ver.:" & App.Major & "." & App.Minor
     
 End Sub
-
-
-
 Private Sub tmrBloqueio_Timer()
     
     intBlockTimer = intBlockTimer - 1
@@ -268,7 +282,6 @@ Private Sub tmrBloqueio_Timer()
     End If
     
 End Sub
-
 Private Sub tmrHora_Timer()
     
     
@@ -276,16 +289,25 @@ Private Sub tmrHora_Timer()
     lblTime.Caption = Format(Now, "dd/mm/yyyy HH:mm:ss")
     
 End Sub
-
-
+Private Sub txtLogin_GotFocus()
+    
+    txtLogin.Text = ""
+    
+End Sub
 Private Sub txtLogin_LostFocus()
     
     
     'Ao perder o foco colocar a primeira letra em maiuscula
     If Trim(txtLogin.Text) <> "" Then
-        txtLogin.Text = UCase(Left(txtLogin.Text, 1)) & Mid(txtLogin.Text, 2)
+        'txtLogin.Text = UCase(Left(txtLogin.Text, 1)) & Mid(txtLogin.Text, 2)
+        txtLogin.Text = UCase(txtLogin.Text)
     End If
 
 End Sub
 
 
+Private Sub txtSenha_GotFocus()
+    
+    txtSenha.Text = ""
+    
+End Sub
