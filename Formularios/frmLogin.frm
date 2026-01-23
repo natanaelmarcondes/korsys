@@ -5,10 +5,11 @@ Begin VB.Form frmLogin
    ClientLeft      =   7965
    ClientTop       =   4275
    ClientWidth     =   11415
+   Icon            =   "frmLogin.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   Picture         =   "frmLogin.frx":0000
+   Picture         =   "frmLogin.frx":08CA
    ScaleHeight     =   7560
    ScaleWidth      =   11415
    StartUpPosition =   2  'CenterScreen
@@ -119,10 +120,10 @@ Begin VB.Form frmLogin
       BackStyle       =   0  'Transparent
       Caption         =   "Nome de usuário"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   12
+         Name            =   "Tahoma"
+         Size            =   11.25
          Charset         =   0
-         Weight          =   700
+         Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
@@ -130,22 +131,22 @@ Begin VB.Form frmLogin
       Height          =   405
       Left            =   7095
       TabIndex        =   5
-      Top             =   2295
+      Top             =   2385
       Width           =   2280
    End
    Begin VB.Label lblTime 
       BackStyle       =   0  'Transparent
       Caption         =   "Data e Hora"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   18
+         Name            =   "Tahoma"
+         Size            =   14.25
          Charset         =   0
-         Weight          =   700
+         Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   1140
+      Height          =   660
       Left            =   420
       TabIndex        =   4
       Top             =   5835
@@ -153,22 +154,44 @@ Begin VB.Form frmLogin
    End
    Begin VB.Label lblWelcome 
       Alignment       =   2  'Center
+      AutoSize        =   -1  'True
       BackStyle       =   0  'Transparent
       Caption         =   "Bem vindo ao Login KorSys"
       BeginProperty Font 
-         Name            =   "Georgia"
+         Name            =   "Tahoma"
          Size            =   20.25
          Charset         =   0
          Weight          =   700
          Underline       =   0   'False
-         Italic          =   -1  'True
+         Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   1065
-      Left            =   2745
+      Height          =   495
+      Left            =   3180
       TabIndex        =   3
-      Top             =   885
-      Width           =   6030
+      Top             =   465
+      Width           =   5550
+   End
+   Begin VB.Label Label1 
+      Alignment       =   2  'Center
+      AutoSize        =   -1  'True
+      BackStyle       =   0  'Transparent
+      Caption         =   "Bem vindo ao Login KorSys"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   20.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00FFFFFF&
+      Height          =   495
+      Left            =   3150
+      TabIndex        =   8
+      Top             =   435
+      Width           =   5550
    End
 End
 Attribute VB_Name = "frmLogin"
@@ -273,6 +296,7 @@ Private Sub Form_Load()
     lblWelcome.Caption = "Bem vindo ao Login KorSys Ver.:" & App.Major & "." & App.Minor
     
 End Sub
+
 Private Sub tmrBloqueio_Timer()
     
     intBlockTimer = intBlockTimer - 1

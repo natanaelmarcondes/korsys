@@ -3,7 +3,7 @@ Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Begin VB.Form frmLeitorArquivo 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Leitor de Arquivo"
-   ClientHeight    =   6720
+   ClientHeight    =   6765
    ClientLeft      =   45
    ClientTop       =   390
    ClientWidth     =   9495
@@ -11,8 +11,16 @@ Begin VB.Form frmLeitorArquivo
    MaxButton       =   0   'False
    MDIChild        =   -1  'True
    MinButton       =   0   'False
-   ScaleHeight     =   6720
+   ScaleHeight     =   6765
    ScaleWidth      =   9495
+   Begin VB.CommandButton Command1 
+      Caption         =   "Command1"
+      Height          =   360
+      Left            =   1005
+      TabIndex        =   8
+      Top             =   6135
+      Width           =   915
+   End
    Begin VB.CommandButton cmdLimpar 
       Caption         =   "Limpar"
       Height          =   465
@@ -37,8 +45,16 @@ Begin VB.Form frmLeitorArquivo
       TabIndex        =   4
       Top             =   975
       Width           =   9150
+      Begin VB.CommandButton cmdSalvar 
+         Caption         =   "Salvar"
+         Height          =   375
+         Left            =   7860
+         TabIndex        =   7
+         Top             =   4545
+         Width           =   1035
+      End
       Begin VB.TextBox txtConteudo 
-         Height          =   4455
+         Height          =   4155
          Left            =   180
          MultiLine       =   -1  'True
          TabIndex        =   5
@@ -116,6 +132,40 @@ End Sub
 Private Sub cmdSair_Click()
     Unload Me
 End Sub
+
+Private Sub cmdSalvar_Click()
+    
+    GravarArquivoTxt txtArquivo.Text, txtConteudo.Text
+    
+    MsgBox "Arquivo salvo com sucesso!", vbInformation
+    
+End Sub
+
+Private Sub Command1_Click()
+    
+    Dim intCount As Integer
+    
+    Me.MousePointer = vbHourglass
+    
+    For intCount = 1 To 2
+        
+        DoEvents
+        
+        Beep 1100, 500
+        Beep 1000, 500
+        Beep 1500, 500
+        Beep 800, 500
+        Beep 950, 500
+        Beep 1200, 500 '1/2 Segundo
+        
+        Sleep 3000 '3 Segundos
+        
+    Next
+    
+    Me.MousePointer = vbDefault
+    
+End Sub
+
 Private Sub Form_Load()
     
     AjustaForm

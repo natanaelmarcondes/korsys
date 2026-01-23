@@ -5,4 +5,6 @@ MDIFormPrincipal = 130, 130, 1380, 632, , 130, 130, 1360, 754, C
 frmAjuda = 0, 0, 0, 0, C, 130, 130, 1380, 632, C
 frmCadUsuarios = 104, 104, 1354, 606, , 130, 130, 1380, 632, C
 modBancoDados = 156, 156, 1406, 658, 
-frmLeitorArquivo = 52, 52, 1302, 554, Z, 156, 156, 1406, 658, C
+frmLeitorArquivo = 52, 52, 1302, 554, , 156, 156, 1406, 658, C
+modApi = 0, 0, 1250, 502, C
+frmConfiguracoes = 130, 130, 1380, 632, Z, 0, 0, 1250, 502, C

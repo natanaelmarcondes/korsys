@@ -27,4 +27,17 @@ Public Function LerArquivoTxt(strCaminho As String) As String
     LerArquivoTxt = strTexto
     
 End Function
+Public Sub GravarArquivoTxt(strCaminho As String, strTexto As String)
+
+    Dim intArquivo As Integer
+            
+    intArquivo = FreeFile
+    
+    'Abriu o arquivo todo e injetou dentro da variavel
+    Open strCaminho For Output As #intArquivo
+    Print #intArquivo, strTexto
+            
+    Close #intArquivo
+            
+End Sub
 
