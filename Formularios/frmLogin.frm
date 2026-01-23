@@ -190,6 +190,8 @@ Private Sub cmdEntrar_Click()
     Dim intLenLogin As Integer
     Dim intLenSenha As Integer
     
+    AbreConexao
+    
     intLenLogin = Len(Trim(txtLogin.Text))
     intLenSenha = Len(Trim(txtSenha.Text))
     
@@ -224,6 +226,7 @@ Private Sub cmdEntrar_Click()
         txtSenha.SetFocus
         intTentativa = intTentativa + 1
     Else
+        FechaConexao
         MDIFormPrincipal.Show 'Abertura do formulario ao validar Usuário e Senha
         Unload Me
         Exit Sub
