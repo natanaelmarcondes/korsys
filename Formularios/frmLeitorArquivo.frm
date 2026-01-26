@@ -120,7 +120,7 @@ Option Explicit
 Private Sub cmdAbrir_Click()
        
     txtArquivo.Text = AbrirArquivo
-        
+    
     txtConteudo.Text = LerArquivoTxt(txtArquivo.Text)
     
 End Sub
