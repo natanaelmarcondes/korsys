@@ -165,7 +165,5 @@ Private Sub Form_Load()
     
     txtValor(0).Text = LerINI("WEBHOOK", "DISCORD")
     txtValor(1).Text = LerINI("WEBHOOK", "CORREIOS")
-    
-    
-    
+        
 End Sub

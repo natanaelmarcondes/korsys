@@ -40,4 +40,47 @@ Public Sub GravarArquivoTxt(strCaminho As String, strTexto As String)
     Close #intArquivo
             
 End Sub
+Public Sub HorarioLog(strHora As String)
+    
+    Dim intHora As Integer
+    intHora = FreeFile
+    
+    Open App.Path & "\log.txt" For Append As #intHora
+    Print #intHora, Format(Now, "dd-mm-yyyy hh:nn:ss") & " - " & strHora
+    Close #intHora
+    
+End Sub
+Public Sub CenterFormInMDI(frm As Form)
+
+    On Error GoTo TrataErro
+    
+    Dim mdi As MDIForm
+    Dim newLeft As Long
+    Dim newTop As Long
+    
+    'Se for MDI Child, centraliza dentro do MDIForm
+    If frm.MDIChild = True Then
+        
+        Set mdi = frm.Parent
+        
+        newLeft = (mdi.ScaleWidth - frm.Width) \ 2
+        newTop = (mdi.ScaleHeight - frm.Height) \ 2
+        
+        If newLeft < 0 Then newLeft = 0
+        If newTop < 0 Then newTop = 0
+        
+        frm.Move newLeft, newTop
+    Else
+        'Fallback: centraliza na tela
+        frm.Left = (Screen.Width - frm.Width) \ 2
+        frm.Top = (Screen.Height - frm.Height) \ 2
+    End If
+    
+    Exit Sub
+
+TrataErro:
+    'Fallback extra, caso Parent não esteja acessível
+    frm.Left = (Screen.Width - frm.Width) \ 2
+    frm.Top = (Screen.Height - frm.Height) \ 2
+End Sub
 

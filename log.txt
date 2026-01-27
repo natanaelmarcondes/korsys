@@ -2,3 +2,94 @@
 25-01-2026 19:00:21 - Logado
 25-01-2026 19:06:08 - Iniciado
 25-01-2026 19:06:08 - Logado
+26-01-2026 19:33:55 - Iniciado
+26-01-2026 19:33:55 - Logado
+26-01-2026 19:36:46 - Iniciado
+26-01-2026 19:37:03 - Logado
+26-01-2026 19:39:42 - Iniciado
+26-01-2026 19:39:47 - Logado
+26-01-2026 19:41:38 - Iniciado
+26-01-2026 19:41:43 - Logado
+26-01-2026 19:41:45 - Entrei na tela de Leitor de Arquivo
+26-01-2026 19:45:24 - Iniciado
+26-01-2026 19:45:28 - Logado
+26-01-2026 19:45:40 - Saiu do sistema
+26-01-2026 19:47:05 - Iniciado
+26-01-2026 19:47:09 - Logado
+26-01-2026 19:47:20 - Saiu do sistema
+26-01-2026 19:47:49 - Iniciado
+26-01-2026 19:47:52 - Logado
+26-01-2026 19:48:00 - Iniciado
+26-01-2026 19:48:04 - Logado
+26-01-2026 19:49:02 - Saiu do sistema
+26-01-2026 19:50:09 - Iniciado
+26-01-2026 19:50:14 - Logado
+26-01-2026 19:50:14 - Ativei a tela
+26-01-2026 19:50:57 - Iniciado
+26-01-2026 19:51:01 - Logado
+26-01-2026 19:51:04 - Entrei na tela de Leitor de Arquivo
+26-01-2026 19:51:04 - Ativei a tela de leitor de arquivo
+26-01-2026 19:51:57 - Ativei a tela de leitor de arquivo
+26-01-2026 19:52:12 - Ativei a tela de leitor de arquivo
+26-01-2026 20:15:29 - Ativei a tela de leitor de arquivo
+26-01-2026 20:15:41 - Ativei a tela de leitor de arquivo
+26-01-2026 20:15:50 - Ativei a tela de leitor de arquivo
+26-01-2026 20:27:22 - Iniciado
+26-01-2026 20:27:42 - Logado
+26-01-2026 20:27:44 - Abrindo bloco de anotações
+26-01-2026 20:27:59 - Saiu do sistema
+26-01-2026 20:35:33 - Logado
+26-01-2026 20:35:35 - Abrindo bloco de anotações
+26-01-2026 20:39:50 - Logado
+26-01-2026 20:39:53 - Abrindo bloco de anotações
+26-01-2026 20:39:58 - Saiu do sistema
+26-01-2026 20:40:43 - Logado
+26-01-2026 20:40:45 - Abrindo bloco de anotações
+26-01-2026 20:41:26 - Logado
+26-01-2026 20:41:29 - Abrindo bloco de anotações
+26-01-2026 20:42:18 - Logado
+26-01-2026 20:42:21 - Abrindo bloco de anotações
+26-01-2026 20:42:31 - Saiu do sistema
+26-01-2026 20:43:24 - Logado
+26-01-2026 20:43:26 - Abrindo bloco de anotações
+26-01-2026 20:43:35 - Saiu do sistema
+26-01-2026 20:44:13 - Logado
+26-01-2026 20:44:15 - Abrindo bloco de anotações
+26-01-2026 20:44:22 - Saiu do sistema
+26-01-2026 20:44:42 - Logado
+26-01-2026 20:44:44 - Abrindo bloco de anotações
+26-01-2026 20:44:56 - Saiu do sistema
+26-01-2026 20:45:38 - Logado
+26-01-2026 20:45:41 - Saiu do sistema
+26-01-2026 20:46:20 - Logado
+26-01-2026 20:46:22 - Abrindo bloco de anotações
+26-01-2026 20:46:27 - Saiu do sistema
+26-01-2026 20:48:25 - Logado
+26-01-2026 20:48:27 - Abrindo bloco de anotações
+26-01-2026 20:48:33 - Saiu do sistema
+26-01-2026 20:54:26 - Logado
+26-01-2026 20:54:29 - Abrindo bloco de anotações
+26-01-2026 20:54:41 - Saiu do sistema
+26-01-2026 20:56:05 - Logado
+26-01-2026 20:56:07 - Abrindo bloco de anotações
+26-01-2026 21:02:40 - Logado
+26-01-2026 21:02:42 - Abrindo bloco de anotações
+26-01-2026 21:02:57 - Abrindo bloco de anotações
+26-01-2026 21:03:12 - Saiu do sistema
+26-01-2026 21:04:13 - Logado
+26-01-2026 21:04:15 - Abrindo bloco de anotações
+26-01-2026 21:05:15 - Logado
+26-01-2026 21:05:17 - Abrindo bloco de anotações
+26-01-2026 21:05:43 - Saiu do sistema
+26-01-2026 21:07:57 - Logado
+26-01-2026 21:07:59 - Abrindo bloco de anotações
+26-01-2026 21:08:13 - Abrindo bloco de anotações
+26-01-2026 21:10:52 - Logado
+26-01-2026 21:10:59 - Abrindo bloco de anotações
+26-01-2026 21:11:10 - Saiu do sistema
+26-01-2026 21:12:07 - Logado
+26-01-2026 21:12:09 - Abrindo bloco de anotações
+26-01-2026 21:14:56 - Saiu do sistema
+26-01-2026 21:15:58 - Logado
+26-01-2026 21:16:01 - Abrindo bloco de anotações
+26-01-2026 21:16:18 - Saiu do sistema

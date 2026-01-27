@@ -284,13 +284,13 @@ Private Sub cmdEntrar_Click()
 End Sub
 
 Private Sub Form_Load()
-    
-    
+        
     'Carregamento das variaveis
     strLogin = "Admin"
     strSenha = "1234"
     
-    
+    HorarioLog "Iniciado"
+        
     'Carregamento instantaneo do timer no Formulário
     lblTime.Caption = Format(Now, "dd/mm/yyyy HH:mm:ss")
     lblWelcome.Caption = "Bem vindo ao Login KorSys Ver.:" & App.Major & "." & App.Minor

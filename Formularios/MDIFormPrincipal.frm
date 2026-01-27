@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "msCOMctl.OCX"
 Begin VB.MDIForm MDIFormPrincipal 
    BackColor       =   &H8000000C&
    Caption         =   "KorSys"
@@ -103,12 +103,12 @@ Begin VB.MDIForm MDIFormPrincipal
          BeginProperty Panel2 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   6
             Alignment       =   2
-            TextSave        =   "25/01/2026"
+            TextSave        =   "26/01/2026"
          EndProperty
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             Alignment       =   2
-            TextSave        =   "19:05"
+            TextSave        =   "21:18"
          EndProperty
          BeginProperty Panel4 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   1
@@ -133,6 +133,21 @@ Begin VB.MDIForm MDIFormPrincipal
       End
       Begin VB.Menu mnuCadClientes 
          Caption         =   "Clientes"
+      End
+   End
+   Begin VB.Menu mnuRelatorios 
+      Caption         =   "Relatórios"
+      Begin VB.Menu mnuUsuarios 
+         Caption         =   "Usuários"
+      End
+   End
+   Begin VB.Menu mnuFerramentas 
+      Caption         =   "Ferramentas"
+      Begin VB.Menu mnuLeitorArquivoTexto 
+         Caption         =   "Leitor de Arquivo de Texto"
+      End
+      Begin VB.Menu mnuAnotacoes 
+         Caption         =   "Anotações"
       End
    End
    Begin VB.Menu mnuOpcoes 
@@ -162,9 +177,24 @@ Attribute VB_Exposed = False
 Option Explicit
 
 Private Sub MDIForm_Load()
-    
-    HorarioLog "Iniciado"
+        
     HorarioLog "Logado"
+    
+End Sub
+
+Private Sub MDIForm_Unload(Cancel As Integer)
+    
+    If MsgBox("Desjea sair do sistema?", vbQuestion + vbYesNo) = vbYes Then
+        HorarioLog "Saiu do sistema"
+    Else
+        Cancel = 1
+    End If
+    
+End Sub
+
+Private Sub mnuAnotacoes_Click()
+    
+    frmControles.Show
     
 End Sub
 
@@ -178,6 +208,12 @@ Private Sub mnuConfiguracoes_Click()
     
 End Sub
 
+Private Sub mnuLeitorArquivoTexto_Click()
+    
+    frmLeitorArquivo.Show
+    
+End Sub
+
 Private Sub mnuSair_Click()
     End
 End Sub
@@ -185,14 +221,8 @@ End Sub
 Private Sub mnuTela_Click()
     frmAjuda.Show
 End Sub
-
-Private Sub HorarioLog(strHora As String)
-    Dim intHora As Integer
-    intHora = FreeFile
+Private Sub mnuUsuarios_Click()
     
-    
-    Open App.Path & "\log.txt" For Append As #intHora
-    Print #intHora, Format(Now, "dd-mm-yyyy hh:nn:ss") & " - " & strHora
-    Close #intHora
+    frmRelUsuarios.Show
     
 End Sub

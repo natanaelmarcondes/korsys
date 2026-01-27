@@ -165,8 +165,13 @@ Private Sub Command1_Click()
     Me.MousePointer = vbDefault
     
 End Sub
+Private Sub Form_Activate()
+    HorarioLog "Ativei a tela de leitor de arquivo"
+End Sub
 
 Private Sub Form_Load()
+    
+    HorarioLog "Entrei na tela de Leitor de Arquivo"
     
     AjustaForm
     
@@ -189,3 +194,4 @@ Private Function AbrirArquivo() As String
     End With
     
 End Function
+
