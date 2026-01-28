@@ -1,7 +1,28 @@
 Attribute VB_Name = "modGlobal"
 Option Explicit
 
-Public strLogin As String
+Public Const USR_ADMIN As String = "Admin"
+Private Const NUM_DIVISAO As Integer = 2
+
+Public Enum Dificuldade
+    Num1 = 1
+    Medio = 2
+    Hard = 3
+    HardCore = 4
+End Enum
+
+Public Type typUsuario
+    Nome As String
+    Email As String
+    Senha As String
+End Type
+
+Public Type typVisitante
+    Nome As String
+    Email As String
+    Senha As String
+    Dificult As Dificuldade
+End Type
 
 Public Function LerArquivoTxt(strCaminho As String) As String
 
@@ -63,8 +84,8 @@ Public Sub CenterFormInMDI(frm As Form)
         
         Set mdi = frm.Parent
         
-        newLeft = (mdi.ScaleWidth - frm.Width) \ 2
-        newTop = (mdi.ScaleHeight - frm.Height) \ 2
+        newLeft = (mdi.ScaleWidth - frm.Width) \ NUM_DIVISAO
+        newTop = (mdi.ScaleHeight - frm.Height) \ NUM_DIVISAO
         
         If newLeft < 0 Then newLeft = 0
         If newTop < 0 Then newTop = 0
@@ -72,15 +93,15 @@ Public Sub CenterFormInMDI(frm As Form)
         frm.Move newLeft, newTop
     Else
         'Fallback: centraliza na tela
-        frm.Left = (Screen.Width - frm.Width) \ 2
-        frm.Top = (Screen.Height - frm.Height) \ 2
+        frm.Left = (Screen.Width - frm.Width) \ NUM_DIVISAO
+        frm.Top = (Screen.Height - frm.Height) \ NUM_DIVISAO
     End If
     
     Exit Sub
 
 TrataErro:
     'Fallback extra, caso Parent não esteja acessível
-    frm.Left = (Screen.Width - frm.Width) \ 2
-    frm.Top = (Screen.Height - frm.Height) \ 2
+    frm.Left = (Screen.Width - frm.Width) \ NUM_DIVISAO
+    frm.Top = (Screen.Height - frm.Height) \ NUM_DIVISAO
 End Sub
 

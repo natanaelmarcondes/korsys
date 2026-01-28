@@ -93,3 +93,32 @@
 26-01-2026 21:15:58 - Logado
 26-01-2026 21:16:01 - Abrindo bloco de anotações
 26-01-2026 21:16:18 - Saiu do sistema
+28-01-2026 18:26:32 - Logado
+28-01-2026 18:26:41 - Saiu do sistema
+28-01-2026 18:29:28 - Logado
+28-01-2026 18:29:39 - Saiu do sistema
+28-01-2026 18:30:34 - Logado
+28-01-2026 18:30:45 - Saiu do sistema
+28-01-2026 18:31:18 - Logado
+28-01-2026 18:31:27 - Saiu do sistema
+28-01-2026 18:33:25 - Logado
+28-01-2026 18:35:06 - Saiu do sistema
+28-01-2026 18:37:30 - Logado
+28-01-2026 18:37:37 - Saiu do sistema
+28-01-2026 18:37:49 - Logado
+28-01-2026 18:38:00 - Saiu do sistema
+28-01-2026 18:41:04 - Logado
+28-01-2026 18:41:14 - Saiu do sistema
+28-01-2026 18:45:31 - Logado
+28-01-2026 18:45:45 - Saiu do sistema
+28-01-2026 18:46:24 - Logado
+28-01-2026 18:46:35 - Saiu do sistema
+28-01-2026 18:56:53 - Logado
+28-01-2026 19:08:01 - Logado
+28-01-2026 19:08:08 - Saiu do sistema
+28-01-2026 19:19:14 - Logado
+28-01-2026 19:19:18 - Saiu do sistema
+28-01-2026 19:29:30 - Logado
+28-01-2026 19:29:36 - Saiu do sistema
+28-01-2026 19:37:28 - Logado
+28-01-2026 19:43:02 - Logado

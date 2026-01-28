@@ -206,9 +206,9 @@ Dim intTentativa As Integer
 Dim intBlockTimer As Integer
 Dim strSenha As String
 
+Private Const NUM_TENTATIVAS As Integer = 3
 Private Sub cmdEntrar_Click()
-    
-    
+        
     'Variaveis de tamanho de texto
     Dim intLenLogin As Integer
     Dim intLenSenha As Integer
@@ -217,16 +217,14 @@ Private Sub cmdEntrar_Click()
     
     intLenLogin = Len(Trim(txtLogin.Text))
     intLenSenha = Len(Trim(txtSenha.Text))
-    
-    
+        
     'Check de caixa de login vazia
     If Trim(txtLogin.Text) = "" Then
         MsgBox "Informe o usuário!", vbInformation
         txtLogin.SetFocus
         Exit Sub
     End If
-    
-    
+        
     'Check de caixa de senha vazia
     If Trim(txtSenha.Text) = "" Then
         MsgBox "Informe a senha!", vbInformation
@@ -257,7 +255,7 @@ Private Sub cmdEntrar_Click()
     
     
     'Bloquear se as tentativas chegarem a 3
-    If intTentativa >= 3 Then
+    If intTentativa >= NUM_TENTATIVAS Then
         cmdEntrar.Enabled = False
         intBlockTimer = 10
         MsgBox "Muitas tentativas! Aguarde 10 segundos.", vbExclamation
@@ -286,11 +284,28 @@ End Sub
 Private Sub Form_Load()
         
     'Carregamento das variaveis
-    strLogin = "Admin"
+    
+    Dim Usuario As typUsuario
+    Dim Visitante As typVisitante
+    
+    Usuario.Nome = "Natanael"
+    Usuario.Email = "natanael@gmail.com"
+    Usuario.Senha = "1234"
+        
+    Visitante.Nome = "Visitante"
+    Visitante.Email = "teste@.comb.r"
+    Visitante.Senha = ""
+        
     strSenha = "1234"
     
     HorarioLog "Iniciado"
-        
+               
+    MsgBox Visitante.Email
+    
+    If Visitante.Dificult = HardCore Then
+        MsgBox "Nivel"
+    End If
+    
     'Carregamento instantaneo do timer no Formulário
     lblTime.Caption = Format(Now, "dd/mm/yyyy HH:mm:ss")
     lblWelcome.Caption = "Bem vindo ao Login KorSys Ver.:" & App.Major & "." & App.Minor

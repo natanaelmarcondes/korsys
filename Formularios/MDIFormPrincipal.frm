@@ -103,12 +103,12 @@ Begin VB.MDIForm MDIFormPrincipal
          BeginProperty Panel2 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   6
             Alignment       =   2
-            TextSave        =   "26/01/2026"
+            TextSave        =   "28/01/2026"
          EndProperty
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             Alignment       =   2
-            TextSave        =   "21:18"
+            TextSave        =   "19:30"
          EndProperty
          BeginProperty Panel4 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   1

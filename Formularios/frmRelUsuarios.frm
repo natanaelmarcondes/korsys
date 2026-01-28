@@ -10,6 +10,14 @@ Begin VB.Form frmRelUsuarios
    MDIChild        =   -1  'True
    ScaleHeight     =   5940
    ScaleWidth      =   10185
+   Begin VB.CommandButton Command2 
+      Caption         =   "Command2"
+      Height          =   495
+      Left            =   5475
+      TabIndex        =   5
+      Top             =   855
+      Width           =   1365
+   End
    Begin VB.TextBox Text3 
       Height          =   285
       Left            =   6780
@@ -28,11 +36,10 @@ Begin VB.Form frmRelUsuarios
    End
    Begin VB.TextBox Text1 
       Height          =   300
-      Left            =   435
+      Left            =   405
       TabIndex        =   2
-      Text            =   "Text1"
-      Top             =   465
-      Width           =   780
+      Top             =   960
+      Width           =   4485
    End
    Begin VB.CommandButton Command1 
       Caption         =   "Adicionar"
@@ -144,8 +151,20 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 
+Private Sub Command2_Click()
+    
+    Text1.Text = UsuarioNivel.UsuarioSupervisor
+    
+    
+    
+End Sub
+
 Private Sub Form_Load()
     
     CenterFormInMDI Me
     
+End Sub
+
+Private Sub Text1_GotFocus()
+    MsgBox "Evento"
 End Sub

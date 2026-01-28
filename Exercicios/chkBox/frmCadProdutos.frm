@@ -92,7 +92,7 @@ Begin VB.Form frmCadProdutos
       Left            =   720
       TabIndex        =   8
       Text            =   "Preço"
-      Top             =   1815
+      Top             =   1935
       Width           =   1785
    End
    Begin VB.ListBox lstProdutos 
@@ -117,7 +117,7 @@ Begin VB.Form frmCadProdutos
       Left            =   720
       TabIndex        =   2
       Text            =   "Quantidade"
-      Top             =   1215
+      Top             =   1290
       Width           =   1785
    End
    Begin VB.TextBox txtDescrição 
@@ -222,6 +222,30 @@ Begin VB.Form frmCadProdutos
       Text            =   "Adicionar Produto"
       Top             =   645
       Width           =   1785
+   End
+   Begin VB.Label Label3 
+      Caption         =   "Preço"
+      Height          =   180
+      Left            =   705
+      TabIndex        =   16
+      Top             =   1695
+      Width           =   1155
+   End
+   Begin VB.Label Label2 
+      Caption         =   "Quantidade"
+      Height          =   285
+      Left            =   750
+      TabIndex        =   15
+      Top             =   1080
+      Width           =   1440
+   End
+   Begin VB.Label Label1 
+      Caption         =   "Produto"
+      Height          =   270
+      Left            =   705
+      TabIndex        =   14
+      Top             =   330
+      Width           =   840
    End
    Begin VB.Label lblTotal 
       AutoSize        =   -1  'True
