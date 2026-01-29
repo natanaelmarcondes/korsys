@@ -85,7 +85,7 @@ Public Sub HorarioLog(strHora As String)
     Close #intHora
     
 End Sub
-Public Sub CenterFormInMDI(frm As Form)
+Public Sub CenterFormInMDI(frm As Form, Optional bolTamanhoPadrao As Boolean = True)
 
     On Error GoTo TrataErro
     
@@ -93,6 +93,11 @@ Public Sub CenterFormInMDI(frm As Form)
     Dim newLeft As Long
     Dim newTop As Long
     
+    If bolTamanhoPadrao = True Then
+        frm.Width = 8000
+        frm.Height = 6000
+    End If
+        
     'Se for MDI Child, centraliza dentro do MDIForm
     If frm.MDIChild = True Then
         

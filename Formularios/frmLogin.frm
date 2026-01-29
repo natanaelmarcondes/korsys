@@ -234,7 +234,7 @@ Private Sub cmdEntrar_Click()
     
     
     'Check de usuário correto
-    If UCase(txtLogin.Text) <> UCase(strLogin) Then
+    If UCase(txtLogin.Text) <> UCase(USR_ADMIN) Then
         MsgBox "Usuário inválido!", vbExclamation
         txtLogin.Text = ""
         txtLogin.SetFocus

@@ -151,14 +151,6 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 
-Private Sub Command2_Click()
-    
-    Text1.Text = UsuarioNivel.UsuarioSupervisor
-    
-    
-    
-End Sub
-
 Private Sub Form_Load()
     
     CenterFormInMDI Me
