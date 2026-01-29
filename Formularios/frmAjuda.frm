@@ -8,6 +8,7 @@ Begin VB.Form frmAjuda
    LinkTopic       =   "Form1"
    MDIChild        =   -1  'True
    ScaleHeight     =   6555
+   ScaleMode       =   0  'User
    ScaleWidth      =   8385
    Begin VB.OptionButton Option1 
       Caption         =   "Option1"

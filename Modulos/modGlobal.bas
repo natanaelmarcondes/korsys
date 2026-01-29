@@ -24,6 +24,20 @@ Public Type typVisitante
     Dificult As Dificuldade
 End Type
 
+
+Public Enum enu_StatusPedido
+    PedidoAberto = 1
+    PedidoFechado = 2
+    PedidoCancelado = 3
+End Enum
+
+
+Public Type typ_Produto
+    Codigo As Integer
+    Descricao As String
+    Preco As Double
+End Type
+
 Public Function LerArquivoTxt(strCaminho As String) As String
 
     Dim intArquivo As Integer

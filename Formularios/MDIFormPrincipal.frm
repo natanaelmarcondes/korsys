@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "msCOMctl.OCX"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
 Begin VB.MDIForm MDIFormPrincipal 
    BackColor       =   &H8000000C&
    Caption         =   "KorSys"
@@ -108,7 +108,7 @@ Begin VB.MDIForm MDIFormPrincipal
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             Alignment       =   2
-            TextSave        =   "19:30"
+            TextSave        =   "21:58"
          EndProperty
          BeginProperty Panel4 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   1
@@ -139,6 +139,9 @@ Begin VB.MDIForm MDIFormPrincipal
       Caption         =   "Relatórios"
       Begin VB.Menu mnuUsuarios 
          Caption         =   "Usuários"
+      End
+      Begin VB.Menu mnuPromoção 
+         Caption         =   "Promoção"
       End
    End
    Begin VB.Menu mnuFerramentas 
@@ -211,6 +214,12 @@ End Sub
 Private Sub mnuLeitorArquivoTexto_Click()
     
     frmLeitorArquivo.Show
+    
+End Sub
+
+Private Sub mnuPromoção_Click()
+    
+    frmPromoção.Show
     
 End Sub
 
