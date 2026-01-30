@@ -213,6 +213,8 @@ Private Sub cmdEntrar_Click()
     Dim intLenLogin As Integer
     Dim intLenSenha As Integer
     
+    On Error GoTo trata_erro
+    
     AbreConexao
     
     intLenLogin = Len(Trim(txtLogin.Text))
@@ -278,6 +280,11 @@ Private Sub cmdEntrar_Click()
         MsgBox "A senha não pode ter mais de 8 caracteres", vbInformation
     End If
     
+    Exit Sub
+    
+trata_erro:
+
+    MsgBox "Ocorreu um erro no sistema:" & Chr(13) & Chr(13) & "Numero do Erro: " & Err.Number & Chr(13) & "Descrição do Erro: " & Err.Description, vbCritical, "Avise o Nathan"
     
 End Sub
 
@@ -287,6 +294,7 @@ Private Sub Form_Load()
     
     Dim Usuario As typUsuario
     Dim Visitante As typVisitante
+    
     
     Usuario.Nome = "Natanael"
     Usuario.Email = "natanael@gmail.com"
@@ -309,6 +317,12 @@ Private Sub Form_Load()
     'Carregamento instantaneo do timer no Formulário
     lblTime.Caption = Format(Now, "dd/mm/yyyy HH:mm:ss")
     lblWelcome.Caption = "Bem vindo ao Login KorSys Ver.:" & App.Major & "." & App.Minor
+    
+    Exit Sub
+    
+trata_erro:
+
+    MsgBox "Ocorreu um erro no sistema:" & Chr(13) & Chr(13) & "Numero do Erro: " & Err.Number & Chr(13) & "Descrição do Erro: " & Err.Description, vbCritical, "Avise o Nathan"
     
 End Sub
 

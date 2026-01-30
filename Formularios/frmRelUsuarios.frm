@@ -2,61 +2,66 @@ VERSION 5.00
 Object = "{1C0489F8-9EFD-423D-887A-315387F18C8F}#1.0#0"; "vsflex8l.ocx"
 Begin VB.Form frmRelUsuarios 
    Caption         =   "Form1"
-   ClientHeight    =   5940
+   ClientHeight    =   4650
    ClientLeft      =   60
    ClientTop       =   405
-   ClientWidth     =   10185
+   ClientWidth     =   8025
    LinkTopic       =   "Form1"
    MDIChild        =   -1  'True
-   ScaleHeight     =   5940
-   ScaleWidth      =   10185
+   ScaleHeight     =   4650
+   ScaleWidth      =   8025
    Begin VB.CommandButton Command2 
-      Caption         =   "Command2"
-      Height          =   495
-      Left            =   5475
+      Caption         =   "Limpar"
+      Height          =   360
+      Left            =   6570
+      TabIndex        =   6
+      Top             =   600
+      Width           =   1125
+   End
+   Begin VB.TextBox Text4 
+      Height          =   300
+      Left            =   5265
       TabIndex        =   5
-      Top             =   855
-      Width           =   1365
+      Top             =   150
+      Width           =   1290
    End
    Begin VB.TextBox Text3 
       Height          =   285
-      Left            =   6780
+      Left            =   3345
       TabIndex        =   4
-      Text            =   "Text3"
-      Top             =   465
-      Width           =   495
+      Top             =   150
+      Width           =   1710
    End
    Begin VB.TextBox Text2 
       Height          =   285
-      Left            =   1335
+      Left            =   1305
       TabIndex        =   3
-      Text            =   "Text2"
-      Top             =   480
-      Width           =   5295
+      Top             =   150
+      Width           =   1800
    End
    Begin VB.TextBox Text1 
-      Height          =   300
-      Left            =   405
+      Height          =   285
+      Left            =   240
       TabIndex        =   2
-      Top             =   960
-      Width           =   4485
+      Top             =   150
+      Width           =   660
    End
    Begin VB.CommandButton Command1 
       Caption         =   "Adicionar"
-      Height          =   570
-      Left            =   7890
+      Height          =   360
+      Left            =   5340
       TabIndex        =   1
-      Top             =   345
-      Width           =   1875
+      Top             =   600
+      Width           =   1245
    End
    Begin VSFlex8LCtl.VSFlexGrid VSFlexGrid1 
-      Height          =   3660
-      Left            =   330
+      Height          =   3255
+      Left            =   270
       TabIndex        =   0
-      Top             =   1605
-      Width           =   9375
-      _cx             =   16536
-      _cy             =   6456
+      Top             =   1110
+      Width           =   7230
+      _cx             =   12753
+      _cy             =   5741
       Appearance      =   1
       BorderStyle     =   1
       Enabled         =   -1  'True
@@ -151,12 +156,94 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 
+Private Enum eUsuarios
+    colCodigo = 0
+    colNome = 1
+    colEmail = 2
+    colSenha = 3
+End Enum
+
+Dim bolAltera As Boolean
+Dim intLinha As Integer
+Private Sub VSFlexGrid1_DblClick()
+    
+    bolAltera = True
+    intLinha = VSFlexGrid1.Row
+    
+    Text1.Text = VSFlexGrid1.TextMatrix(VSFlexGrid1.Row, eUsuarios.colCodigo)
+    Text2.Text = VSFlexGrid1.TextMatrix(VSFlexGrid1.Row, eUsuarios.colNome)
+    Text3.Text = VSFlexGrid1.TextMatrix(VSFlexGrid1.Row, eUsuarios.colEmail)
+    Text4.Text = VSFlexGrid1.TextMatrix(VSFlexGrid1.Row, eUsuarios.colSenha)
+    
+End Sub
+Private Sub Command1_Click()
+    
+    With VSFlexGrid1
+        If bolAltera = True Then
+            .TextMatrix(intLinha, eUsuarios.colCodigo) = Text1.Text
+            .TextMatrix(intLinha, eUsuarios.colNome) = Text2.Text
+            .TextMatrix(intLinha, eUsuarios.colEmail) = Text3.Text
+            .TextMatrix(intLinha, eUsuarios.colSenha) = Text4.Text
+        Else
+            .Rows = .Rows + 1 'Cria mais uma linha
+            .TextMatrix(.Rows - 1, eUsuarios.colCodigo) = Text1.Text
+            .TextMatrix(.Rows - 1, eUsuarios.colNome) = Text2.Text
+            .TextMatrix(.Rows - 1, eUsuarios.colEmail) = Text3.Text
+            .TextMatrix(.Rows - 1, eUsuarios.colSenha) = Text4.Text
+        End If
+    End With
+    
+    bolAltera = False
+    intLinha = 0
+    
+    LimpaTextbox
+    
+End Sub
+Private Sub LimpaTextbox()
+    
+    Text1.Text = ""
+    Text2.Text = ""
+    Text3.Text = ""
+    Text4.Text = ""
+
+End Sub
+Private Sub Command2_Click()
+    
+    MontaGrid
+    
+End Sub
 Private Sub Form_Load()
     
-    CenterFormInMDI Me
+    CenterFormInMDI Me, True
     
+    MontaGrid
+        
+End Sub
+Private Sub MontaGrid()
+    
+    With VSFlexGrid1
+        'Limpa tudo
+        .Clear
+
+        .FixedRows = 1
+        .FixedCols = 0
+    
+        .Rows = 1
+        .Cols = 4
+        
+        .AllowUserResizing = flexResizeColumns
+        .SelectionMode = flexSelectionByRow
+        
+        .FormatString = "Código|Nome|Email|Senha"
+        
+        .ColWidth(eUsuarios.colCodigo) = 1000
+        .ColWidth(eUsuarios.colNome) = 2500
+        .ColWidth(eUsuarios.colEmail) = 2500
+        .ColWidth(eUsuarios.colSenha) = 1000
+        
+    End With
+    
+        
 End Sub
 
-Private Sub Text1_GotFocus()
-    MsgBox "Evento"
-End Sub
+
