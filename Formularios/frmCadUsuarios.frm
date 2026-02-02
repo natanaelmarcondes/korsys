@@ -250,3 +250,8 @@ Private Sub LimparCampos()
     
 End Sub
 
+Private Sub Form_Unload(Cancel As Integer)
+    
+    Set frmCadUsuarios = Nothing
+    
+End Sub
