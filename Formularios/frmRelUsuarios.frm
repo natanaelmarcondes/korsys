@@ -10,58 +10,14 @@ Begin VB.Form frmRelUsuarios
    MDIChild        =   -1  'True
    ScaleHeight     =   4650
    ScaleWidth      =   8025
-   Begin VB.CommandButton Command2 
-      Caption         =   "Limpar"
-      Height          =   360
-      Left            =   6570
-      TabIndex        =   6
-      Top             =   600
-      Width           =   1125
-   End
-   Begin VB.TextBox Text4 
-      Height          =   300
-      Left            =   5265
-      TabIndex        =   5
-      Top             =   150
-      Width           =   1290
-   End
-   Begin VB.TextBox Text3 
-      Height          =   285
-      Left            =   3345
-      TabIndex        =   4
-      Top             =   150
-      Width           =   1710
-   End
-   Begin VB.TextBox Text2 
-      Height          =   285
-      Left            =   1305
-      TabIndex        =   3
-      Top             =   150
-      Width           =   1800
-   End
-   Begin VB.TextBox Text1 
-      Height          =   285
-      Left            =   240
-      TabIndex        =   2
-      Top             =   150
-      Width           =   660
-   End
-   Begin VB.CommandButton Command1 
-      Caption         =   "Adicionar"
-      Height          =   360
-      Left            =   5340
-      TabIndex        =   1
-      Top             =   600
-      Width           =   1245
-   End
    Begin VSFlex8LCtl.VSFlexGrid VSFlexGrid1 
-      Height          =   3255
-      Left            =   270
+      Height          =   3330
+      Left            =   195
       TabIndex        =   0
-      Top             =   1110
-      Width           =   7230
-      _cx             =   12753
-      _cy             =   5741
+      Top             =   240
+      Width           =   7620
+      _cx             =   13441
+      _cy             =   5874
       Appearance      =   1
       BorderStyle     =   1
       Enabled         =   -1  'True

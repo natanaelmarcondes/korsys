@@ -27,7 +27,7 @@ Begin VB.Form frmCadUsuarios
       Left            =   4095
       Style           =   1  'Graphical
       TabIndex        =   4
-      Top             =   5400
+      Top             =   5385
       Width           =   1215
    End
    Begin VB.CommandButton cmdRegistrar 

@@ -4,12 +4,15 @@ Public cn As ADODB.Connection
 Public Function AbreConexao() As Boolean
             
     On Error GoTo trata_erro
-                        
+                            
+    Screen.MousePointer = vbHourglass   '  Aguarde
+    
     AbreConexao = False
             
     If Not cn Is Nothing Then
         If cn.State = adStateOpen Then
             AbreConexao = True
+            Screen.MousePointer = vbDefault
             Exit Function
         End If
     End If
@@ -22,9 +25,12 @@ Public Function AbreConexao() As Boolean
             
     AbreConexao = True
     
+    Screen.MousePointer = vbDefault
+    
     Exit Function
     
 trata_erro:
+    Screen.MousePointer = vbDefault
     AbreConexao = False
     MsgBox "Falha ao tentar abrir a conexão do banco de dados: " & Chr(13) & Chr(13) & Err.Number & " " & Err.Description, vbInformation, "Tente novamente"
     
