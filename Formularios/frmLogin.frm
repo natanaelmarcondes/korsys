@@ -209,83 +209,49 @@ Dim strSenha As String
 Private Const NUM_TENTATIVAS As Integer = 3
 Private Sub cmdEntrar_Click()
         
-    'Variaveis de tamanho de texto
-    Dim intLenLogin As Integer
-    Dim intLenSenha As Integer
-    
-    On Error GoTo trata_erro
-    
-    AbreConexao
-    
-    intLenLogin = Len(Trim(txtLogin.Text))
-    intLenSenha = Len(Trim(txtSenha.Text))
-        
-    'Check de caixa de login vazia
-    If Trim(txtLogin.Text) = "" Then
-        MsgBox "Informe o usuário!", vbInformation
-        txtLogin.SetFocus
+    Dim rs As ADODB.Recordset
+            
+    If AbreConexao = False Then
         Exit Sub
     End If
+           
+    'usar o que eu preciso
+    Set rs = New ADODB.Recordset
+    
+    rs.Open "select nome,email,senha,nivel,ativo from usuarios where email = '" & Trim(txtLogin.Text) & "'", cn
         
-    'Check de caixa de senha vazia
-    If Trim(txtSenha.Text) = "" Then
-        MsgBox "Informe a senha!", vbInformation
-        txtSenha.SetFocus
+    If rs.EOF Then
+        rs.Close
+        Set rs = Nothing
+        MsgBox "Usuario não encontrado", vbInformation
         Exit Sub
-    End If
-    
-    
-    'Check de usuário correto
-    If UCase(txtLogin.Text) <> UCase(USR_ADMIN) Then
-        MsgBox "Usuário inválido!", vbExclamation
-        txtLogin.Text = ""
-        txtLogin.SetFocus
-        intTentativa = intTentativa + 1
-    
-    'Check de senha correta
-    ElseIf txtSenha.Text <> strSenha Then
-        MsgBox "Senha inválida!", vbExclamation
-        txtSenha.Text = ""
-        txtSenha.SetFocus
-        intTentativa = intTentativa + 1
     Else
-        FechaConexao
-        MDIFormPrincipal.Show 'Abertura do formulario ao validar Usuário e Senha
+        tUsuarios.Nome = IIf(IsNull(rs!Nome), "VISITANTE", rs!Nome)
+        tUsuarios.Email = rs!Email
+        
+        If IsNull(rs!Senha) Or rs!Senha = "" Then
+            MsgBox "Senha em branco, contate o adminstrador", vbInformation
+            rs.Close
+            Set rs = Nothing
+            FechaConexao
+            Exit Sub
+        Else
+            tUsuarios.Senha = rs!Senha
+        End If
+    End If
+    
+    rs.Close
+    Set rs = Nothing
+    
+    FechaConexao
+    
+    If txtSenha.Text = tUsuarios.Senha Then
         Unload Me
-        Exit Sub
+        MDIFormPrincipal.Show
+    Else
+        MsgBox "Senha inválida", vbInformation
     End If
-    
-    
-    'Bloquear se as tentativas chegarem a 3
-    If intTentativa >= NUM_TENTATIVAS Then
-        cmdEntrar.Enabled = False
-        intBlockTimer = 10
-        MsgBox "Muitas tentativas! Aguarde 10 segundos.", vbExclamation
-        tmrBloqueio.Enabled = True
-    End If
-    
-    
-    'Checar se tem mais de 3 caracteres no username
-    If intLenLogin < 4 Then
-        MsgBox "O Username tem de ter mais de 3 caracteres", vbInformation
-    ElseIf intLenLogin > 15 Then
-        MsgBox "O Username não pode conter mais de 15 caracteres", vbInformation
-    End If
-    
-    
-    'Checar se tem mais de 4 caracteres na senha
-    If intLenSenha < 5 Then
-        MsgBox "A senha tem de ter mais de 4 caracteres", vbInformation
-    ElseIf intLenSenha > 8 Then
-        MsgBox "A senha não pode ter mais de 8 caracteres", vbInformation
-    End If
-    
-    Exit Sub
-    
-trata_erro:
-
-    MsgBox "Ocorreu um erro no sistema:" & Chr(13) & Chr(13) & "Numero do Erro: " & Err.Number & Chr(13) & "Descrição do Erro: " & Err.Description, vbCritical, "Avise o Nathan"
-    
+        
 End Sub
 
 Private Sub Form_Load()
@@ -294,8 +260,7 @@ Private Sub Form_Load()
     
     Dim Usuario As typUsuario
     Dim Visitante As typVisitante
-    
-    
+            
     Usuario.Nome = "Natanael"
     Usuario.Email = "natanael@gmail.com"
     Usuario.Senha = "1234"
@@ -307,12 +272,7 @@ Private Sub Form_Load()
     strSenha = "1234"
     
     HorarioLog "Iniciado"
-               
-    MsgBox Visitante.Email
-    
-    If Visitante.Dificult = HardCore Then
-        MsgBox "Nivel"
-    End If
+   
     
     'Carregamento instantaneo do timer no Formulário
     lblTime.Caption = Format(Now, "dd/mm/yyyy HH:mm:ss")

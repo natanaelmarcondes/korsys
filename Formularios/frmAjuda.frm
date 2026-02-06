@@ -120,6 +120,3 @@ Private Sub Form_Load()
     
 End Sub
 
-Private Sub Text1_Change()
-
-End Sub

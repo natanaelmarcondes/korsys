@@ -15,6 +15,8 @@ Public Type typUsuario
     Nome As String
     Email As String
     Senha As String
+    Nivel As String
+    Ativo As String
 End Type
 
 Public Type typVisitante
@@ -37,6 +39,11 @@ Public Type typ_Produto
     Descricao As String
     Preco As Double
 End Type
+
+Global tUsuarios As typUsuario
+
+Public strUsuario As String
+Public strEmail As String
 
 Public Function LerArquivoTxt(strCaminho As String) As String
 
