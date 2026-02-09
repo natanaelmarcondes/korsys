@@ -16,6 +16,23 @@ Begin VB.Form frmLogin
    ScaleWidth      =   11415
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  'CenterScreen
+   Begin VB.CheckBox chkExibirSenha 
+      Caption         =   "Exibir Senha"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   9
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   510
+      Left            =   10185
+      TabIndex        =   7
+      Top             =   3630
+      Width           =   1095
+   End
    Begin VB.TextBox txtSenha 
       BackColor       =   &H80000016&
       BorderStyle     =   0  'None
@@ -161,6 +178,14 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
+
+
+Private Sub chkExibirSenha_Click()
+    
+    chkExibir
+    
+End Sub
+
 Private Sub cmdEntrar_Click()
         
     Dim rs As ADODB.Recordset
@@ -230,5 +255,16 @@ End Sub
 Private Sub txtSenha_GotFocus()
     
     txtSenha.Text = ""
+    
+End Sub
+
+
+Private Sub chkExibir()
+    
+    If chkExibirSenha.Value = 1 Then
+        txtSenha.PasswordChar = ""
+    Else
+        txtSenha.PasswordChar = "*"
+    End If
     
 End Sub

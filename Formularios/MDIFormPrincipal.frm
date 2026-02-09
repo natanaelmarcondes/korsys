@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "msCOMctl.OCX"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
 Begin VB.MDIForm MDIFormPrincipal 
    BackColor       =   &H8000000C&
    Caption         =   "KorSys"
@@ -103,12 +103,12 @@ Begin VB.MDIForm MDIFormPrincipal
          BeginProperty Panel2 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   6
             Alignment       =   2
-            TextSave        =   "29/01/2026"
+            TextSave        =   "08/02/2026"
          EndProperty
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             Alignment       =   2
-            TextSave        =   "19:01"
+            TextSave        =   "04:05"
          EndProperty
          BeginProperty Panel4 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   1
