@@ -10,19 +10,35 @@ Begin VB.Form frmRelUsuarios
    MDIChild        =   -1  'True
    ScaleHeight     =   5025
    ScaleWidth      =   8265
+   Begin VB.TextBox txtBusca 
+      Height          =   345
+      Left            =   2670
+      TabIndex        =   3
+      ToolTipText     =   "Digite o nome da busca"
+      Top             =   135
+      Width           =   5190
+   End
+   Begin VB.ComboBox cboCampos 
+      Height          =   315
+      Left            =   240
+      Style           =   2  'Dropdown List
+      TabIndex        =   2
+      Top             =   135
+      Width           =   2130
+   End
    Begin VB.CommandButton cmdListar 
       Caption         =   "Listar Usuários"
       Height          =   615
-      Left            =   5595
+      Left            =   5655
       TabIndex        =   1
-      Top             =   3915
+      Top             =   4035
       Width           =   1890
    End
-   Begin VSFlex8LCtl.VSFlexGrid VSFlexGrid1 
+   Begin VSFlex8LCtl.VSFlexGrid grdUsuarios 
       Height          =   3330
       Left            =   195
       TabIndex        =   0
-      Top             =   240
+      Top             =   615
       Width           =   7620
       _cx             =   13441
       _cy             =   5874
@@ -121,115 +137,117 @@ Attribute VB_Exposed = False
 Option Explicit
 
 Private Enum eUsuarios
-    colCodigo = 0
+    colId = 0
     colNome = 1
     colEmail = 2
     colSenha = 3
+    colNivel = 4
+    colAtivo = 5
 End Enum
 
-Dim bolAltera As Boolean
-Dim intLinha As Integer
-Dim rs As ADODB.Recordset
+Private Sub ListarUsuarios()
 
-Private Sub cmdListar_Click()
+    Dim lng_Linha As Long
+    Dim rs As ADODB.Recordset
+    Dim strSQL As String
     
-    On Error GoTo TrataErro
-    Screen.MousePointer = vbHourglass
+    If AbreConexao = False Then
+        Exit Sub
+    End If
     
-
     Set rs = New ADODB.Recordset
-    rs.Open "select * from usuarios", cn
-
-    Set VSFlexGrid1.DataSource = rs
-    Screen.MousePointer = vbDefault
-    Exit Sub
     
-TrataErro:
-    Screen.MousePointer = vbDefault
-    MsgBox "Falha ao tentar abrir a conexão do banco de dados: " & Chr(13) & Chr(13) & Err.Number & " " & Err.Description, vbInformation, "Tente novamente"
-
-End Sub
-
-
-
-
-
-Private Sub VSFlexGrid1_DblClick()
-'
-'    bolAltera = True
-'    intLinha = VSFlexGrid1.Row
-'
-'    Text1.Text = VSFlexGrid1.TextMatrix(VSFlexGrid1.Row, eUsuarios.colCodigo)
-'    Text2.Text = VSFlexGrid1.TextMatrix(VSFlexGrid1.Row, eUsuarios.colNome)
-'    Text3.Text = VSFlexGrid1.TextMatrix(VSFlexGrid1.Row, eUsuarios.colEmail)
-'    Text4.Text = VSFlexGrid1.TextMatrix(VSFlexGrid1.Row, eUsuarios.colSenha)
-'
-End Sub
-Private Sub Command1_Click()
-'
-'    With VSFlexGrid1
-'        If bolAltera = True Then
-'            .TextMatrix(intLinha, eUsuarios.colCodigo) = Text1.Text
-'            .TextMatrix(intLinha, eUsuarios.colNome) = Text2.Text
-'            .TextMatrix(intLinha, eUsuarios.colEmail) = Text3.Text
-'            .TextMatrix(intLinha, eUsuarios.colSenha) = Text4.Text
-'        Else
-'            .Rows = .Rows + 1 'Cria mais uma linha
-'            .TextMatrix(.Rows - 1, eUsuarios.colCodigo) = Text1.Text
-'            .TextMatrix(.Rows - 1, eUsuarios.colNome) = Text2.Text
-'            .TextMatrix(.Rows - 1, eUsuarios.colEmail) = Text3.Text
-'            .TextMatrix(.Rows - 1, eUsuarios.colSenha) = Text4.Text
-'        End If
-'    End With
-'
-'    bolAltera = False
-'    intLinha = 0
-'
-'    LimpaTextbox
+    strSQL = ""
+    strSQL = "select id,nome,email,senha,nivel,ativo "
+    strSQL = strSQL & "from usuarios "
+    strSQL = strSQL & "where "
     
-End Sub
-Private Sub LimpaTextbox()
     
-'    Text1.Text = ""
-'    Text2.Text = ""
-'    Text3.Text = ""
-'    Text4.Text = ""
-
-End Sub
-Private Sub Command2_Click()
+    Select Case cboCampos.Text
+        
+        Case "Id"
+            strSQL = strSQL & "id like '%"
+        Case "Nome"
+            strSQL = strSQL & "Nome like '%"
+        Case "Email"
+            strSQL = strSQL & "Email like '%"
+    End Select
     
-    MontaGrid
+    strSQL = strSQL & txtBusca.Text
+    strSQL = strSQL & "%'"
+   
     
-End Sub
-Private Sub Form_Load()
-
-    On Error GoTo TrataErro
-    Screen.MousePointer = vbHourglass
-
-    CenterFormInMDI Me, True
     
-    MontaGrid
+    rs.Open strSQL, cn
     
-    Screen.MousePointer = vbHourglass
-    AbreConexao
-    Screen.MousePointer = vbDefault
+    If rs.EOF Then
+        rs.Close
+        Set rs = Nothing
+        MsgBox "Usuario não encontrado", vbInformation
+        Exit Sub
+    Else
+        
+        rs.MoveFirst
+        
+        Do While Not rs.EOF
+            
+            grdUsuarios.Rows = grdUsuarios.Rows + 1
+            lng_Linha = grdUsuarios.Rows - 1
+        
+            grdUsuarios.TextMatrix(lng_Linha, 0) = IIf(Isnull(rs!Id), "", rs!Id)
+            grdUsuarios.TextMatrix(lng_Linha, 1) = IIf(Isnull(rs!Nome), "", rs!Nome)
+            grdUsuarios.TextMatrix(lng_Linha, 2) = IIf(Isnull(rs!Email), "", rs!Email)
+            grdUsuarios.TextMatrix(lng_Linha, 3) = IIf(Isnull(rs!Senha), "", rs!Senha)
+            grdUsuarios.TextMatrix(lng_Linha, 4) = IIf(Isnull(rs!Nivel), "", rs!Nivel)
+            grdUsuarios.TextMatrix(lng_Linha, 5) = IIf(IIf(Isnull(rs!Ativo), "", rs!Ativo), "ATIVO", "INATIVO")
+                                    
+            grdUsuarios.TextMatrix(lng_Linha, 5) = IIf(rs!Ativo = 1, "ATIVO", "INATIVO")
+            
+            
+            
+            If Not Isnull(rs!Ativo) Then
+                grdUsuarios.TextMatrix(lng_Linha, 5) = rs!Ativo
+                If rs!Ativo = 0 Then
+                    grdUsuarios.TextMatrix(lng_Linha, 5) = "INATIVO"
+                Else
+                    grdUsuarios.TextMatrix(lng_Linha, 5) = "ATIVO"
+                End If
+                                
+            Else
+                grdUsuarios.TextMatrix(lng_Linha, 5) = ""
+            End If
+                        
+            rs.MoveNext
+        
+        Loop
+        
+    End If
     
-TrataErro:
-    Screen.MousePointer = vbDefault
-    MsgBox "Falha ao tentar abrir a conexão do banco de dados: " & Chr(13) & Chr(13) & Err.Number & " " & Err.Description, vbInformation, "Tratamento de erro"
-
-    
-End Sub
-
-Private Sub Form_Unload(Cancel As Integer)
+    rs.Close
+    Set rs = Nothing
     
     FechaConexao
+    
+End Sub
+Private Sub cmdListar_Click()
+    
+    MontaGrid
+    ListarUsuarios
+    
+End Sub
+
+Private Sub Form_Load()
+            
+            
+    CenterFormInMDI Me, True
+    MontaGrid
+    ComboFill
     
 End Sub
 
 Private Sub MontaGrid()
     
-    With VSFlexGrid1
+    With grdUsuarios
         'Limpa tudo
         .Clear
 
@@ -237,21 +255,32 @@ Private Sub MontaGrid()
         .FixedCols = 0
     
         .Rows = 1
-        .Cols = 4
+        .Cols = 6
         
         .AllowUserResizing = flexResizeColumns
         .SelectionMode = flexSelectionByRow
         
-        .FormatString = "Código|Nome|Email|Senha"
+        .FormatString = "Id|Nome|Email|Senha|Nivel|Ativo"
         
-        .ColWidth(eUsuarios.colCodigo) = 1000
-        .ColWidth(eUsuarios.colNome) = 2500
-        .ColWidth(eUsuarios.colEmail) = 2500
-        .ColWidth(eUsuarios.colSenha) = 1000
+        .ColWidth(eUsuarios.colId) = 600
+        .ColWidth(eUsuarios.colNome) = 2000
+        .ColWidth(eUsuarios.colEmail) = 2000
+        .ColWidth(eUsuarios.colSenha) = 1100
+        .ColWidth(eUsuarios.colNivel) = 900
+        .ColWidth(eUsuarios.colAtivo) = 500
         
     End With
     
         
 End Sub
 
+Private Sub ComboFill()
+    
+    cboCampos.Clear
+    cboCampos.AddItem "Id"
+    cboCampos.AddItem "Nome"
+    cboCampos.AddItem "Email"
+    cboCampos.Text = "Id"
+    
+End Sub
 
