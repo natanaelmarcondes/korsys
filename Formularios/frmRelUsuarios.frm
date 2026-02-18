@@ -1,7 +1,7 @@
 VERSION 5.00
 Object = "{1C0489F8-9EFD-423D-887A-315387F18C8F}#1.0#0"; "vsflex8l.ocx"
 Begin VB.Form frmRelUsuarios 
-   Caption         =   "Form1"
+   Caption         =   "Cadastro de Usuários"
    ClientHeight    =   5415
    ClientLeft      =   60
    ClientTop       =   405
@@ -10,6 +10,23 @@ Begin VB.Form frmRelUsuarios
    MDIChild        =   -1  'True
    ScaleHeight     =   5415
    ScaleWidth      =   10545
+   Begin VB.CommandButton cmdAlterar 
+      Caption         =   "Alterar"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   540
+      Left            =   3435
+      TabIndex        =   21
+      Top             =   4695
+      Width           =   1500
+   End
    Begin VB.CommandButton cmdDeletar 
       Caption         =   "Deletar"
       BeginProperty Font 
@@ -22,7 +39,7 @@ Begin VB.Form frmRelUsuarios
          Strikethrough   =   0   'False
       EndProperty
       Height          =   540
-      Left            =   1110
+      Left            =   270
       TabIndex        =   20
       Top             =   4695
       Width           =   1500
@@ -38,11 +55,11 @@ Begin VB.Form frmRelUsuarios
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   555
-      Left            =   2685
+      Height          =   540
+      Left            =   1845
       TabIndex        =   19
-      Top             =   4680
-      Width           =   1710
+      Top             =   4695
+      Width           =   1500
    End
    Begin VB.CommandButton cmdCancelar 
       Caption         =   "Cancelar"
@@ -55,11 +72,11 @@ Begin VB.Form frmRelUsuarios
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   585
-      Left            =   4500
+      Height          =   540
+      Left            =   5040
       TabIndex        =   18
-      Top             =   4650
-      Width           =   1770
+      Top             =   4695
+      Width           =   1500
    End
    Begin VB.Frame fraUsuario 
       Caption         =   "Usuário"
@@ -153,6 +170,7 @@ Begin VB.Form frmRelUsuarios
          Width           =   1005
       End
       Begin VB.TextBox txtId 
+         Enabled         =   0   'False
          Height          =   315
          Left            =   150
          TabIndex        =   2
@@ -252,11 +270,11 @@ Begin VB.Form frmRelUsuarios
    End
    Begin VB.CommandButton cmdSair 
       Caption         =   "Sair"
-      Height          =   615
-      Left            =   6390
+      Height          =   540
+      Left            =   6645
       TabIndex        =   10
-      Top             =   4620
-      Width           =   1890
+      Top             =   4695
+      Width           =   1500
    End
    Begin VSFlex8LCtl.VSFlexGrid grdUsuarios 
       Height          =   3330
@@ -403,6 +421,8 @@ Private Enum eUsuarios
     colAtivo = 5
 End Enum
 
+Dim bolAltera As Boolean
+
 Private Sub ListarUsuarios()
 
     Dim lng_Linha As Long
@@ -451,7 +471,7 @@ Private Sub ListarUsuarios()
             grdUsuarios.Rows = grdUsuarios.Rows + 1
             lng_Linha = grdUsuarios.Rows - 1
         
-            grdUsuarios.TextMatrix(lng_Linha, 0) = IIf(IsNull(rs!Id), "", rs!Id)
+            grdUsuarios.TextMatrix(lng_Linha, 0) = IIf(IsNull(rs!id), "", rs!id)
             grdUsuarios.TextMatrix(lng_Linha, 1) = IIf(IsNull(rs!Nome), "", rs!Nome)
             grdUsuarios.TextMatrix(lng_Linha, 2) = IIf(IsNull(rs!Email), "", rs!Email)
             grdUsuarios.TextMatrix(lng_Linha, 3) = IIf(IsNull(rs!Senha), "", rs!Senha)
@@ -488,21 +508,33 @@ Private Sub ListarUsuarios()
 End Sub
 Private Sub cmdListar_Click()
     
+    
         
 End Sub
 
 Private Sub cmdAceitar_Click()
     
     Dim strSQL As String
+    Dim strAlt As String
+    
+    If ValidaCampos = False Then
+        Exit Sub
+    End If
     
     If AbreConexao = False Then
         Exit Sub
     End If
     
+    strAlt = "update usuarios set nome = '" & txtNome.Text & "', email = '" & txtEmail.Text & "',senha = '" & txtSenha.Text & "',nivel = '" & cboNivel.Text & "',ativo = " & chkInativo.Value & " Where id = " & txtId.Text & ""
     strSQL = "insert into usuarios (nome, email, senha, nivel, ativo) values ('" & txtNome.Text & "','" & txtEmail.Text & "','" & txtSenha.Text & "','" & cboNivel.Text & "', " & IIf(chkInativo.Value = 1, 0, 1) & ")"
+        
     
+    If bolAltera = True Then
+        cn.Execute strAlt
+    Else
+        cn.Execute strSQL
+    End If
     
-    cn.Execute strSQL
     
     FechaConexao
     
@@ -514,8 +546,19 @@ Private Sub cmdAceitar_Click()
     
 End Sub
 
-Private Sub cmdCancelar_Click()
+Private Sub cmdAlterar_Click()
+        
+    Me.Caption = "Cadastro de Usuários" & " - Alterando"
+    LimpaCampos
+    ComboFill
+    CampoPesquisa False
+    bolAltera = True
     
+End Sub
+
+Private Sub cmdCancelar_Click()
+        
+    Me.Caption = "Cadastro de Usuários"
     LimpaCampos
     ComboFill
     CampoPesquisa True
@@ -546,10 +589,11 @@ End Sub
 
 Private Sub cmdIncluir_Click()
     
+    Me.Caption = "Cadastro de Usuários" & " - Incluindo"
     LimpaCampos
     ComboFill
     CampoPesquisa False
-   
+    bolAltera = False
     
 End Sub
 
@@ -669,3 +713,37 @@ Private Sub grdUsuarios_DblClick()
     
     
 End Sub
+
+
+Private Function ValidaCampos() As Boolean
+    
+    ValidaCampos = False
+    
+    If bolAltera = True Then
+        If txtId.Text = "" Then
+            MsgBox "Selecione um usuário", vbInformation, "Verifique"
+            Exit Function
+        End If
+    End If
+    
+    If txtNome.Text = "" Then
+        MsgBox "Nome Inválido", vbInformation, "Verifique"
+        Exit Function
+    End If
+    
+    If txtEmail.Text = "" Then
+        MsgBox "Email Inválido", vbInformation, "Verifique"
+        Exit Function
+    End If
+    
+    If txtSenha.Text = "" Then
+        MsgBox "Senha Inválido", vbInformation, "Verifique"
+        Exit Function
+    End If
+    
+    ValidaCampos = True
+End Function
+
+
+
+
