@@ -19,7 +19,10 @@ Public Function AbreConexao() As Boolean
     
     Set cn = New ADODB.Connection
     
-    cn.ConnectionString = "Driver={MySQL ODBC 8.0 ANSI Driver};Server=108.179.193.5;Database=natan291_korsys;User=natan291_root;Password=Korsys@2026;Port=3306;Option=3;"
+    'Nuvem
+    'cn.ConnectionString = "Driver={MySQL ODBC 8.0 ANSI Driver};Server=108.179.193.5;Database=natan291_korsys;User=natan291_root;Password=Korsys@2026;Port=3306;Option=3;"
+    'Desenvolvimento Local
+    cn.ConnectionString = "Driver={MySQL ODBC 8.0 ANSI Driver};Server=localhost;Database=natan291_korsys;User=root;Password=KeyMaster;Port=3306;Option=3;"
     
     cn.Open
             

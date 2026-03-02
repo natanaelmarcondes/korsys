@@ -206,6 +206,66 @@ Begin VB.Form frmRelUsuarios
       AccessibleValue =   ""
       AccessibleRole  =   24
    End
+   Begin VB.Frame fraPesquisa 
+      Caption         =   "Pesquisa"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H000000FF&
+      Height          =   825
+      Left            =   255
+      TabIndex        =   11
+      Top             =   30
+      Width           =   10110
+      Begin VB.CommandButton cmdListar 
+         Caption         =   "Listar"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   315
+         Left            =   8280
+         TabIndex        =   23
+         Top             =   360
+         Width           =   1110
+      End
+      Begin VB.ComboBox cboCampos 
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   315
+         Left            =   225
+         Style           =   2  'Dropdown List
+         TabIndex        =   0
+         Top             =   360
+         Width           =   2220
+      End
+      Begin VB.TextBox txtBusca 
+         Height          =   315
+         Left            =   2550
+         TabIndex        =   1
+         ToolTipText     =   "Digite o nome da busca"
+         Top             =   360
+         Width           =   5445
+      End
+   End
    Begin VB.Frame fraUsuario 
       Caption         =   "Usuário"
       BeginProperty Font 
@@ -394,66 +454,6 @@ Begin VB.Form frmRelUsuarios
          TabIndex        =   13
          Top             =   210
          Width           =   150
-      End
-   End
-   Begin VB.Frame fraPesquisa 
-      Caption         =   "Pesquisa"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H000000FF&
-      Height          =   825
-      Left            =   255
-      TabIndex        =   11
-      Top             =   30
-      Width           =   10110
-      Begin VB.CommandButton cmdListar 
-         Caption         =   "Listar"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   315
-         Left            =   8280
-         TabIndex        =   23
-         Top             =   360
-         Width           =   1110
-      End
-      Begin VB.ComboBox cboCampos 
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   315
-         Left            =   225
-         Style           =   2  'Dropdown List
-         TabIndex        =   0
-         Top             =   360
-         Width           =   2220
-      End
-      Begin VB.TextBox txtBusca 
-         Height          =   315
-         Left            =   2550
-         TabIndex        =   1
-         ToolTipText     =   "Digite o nome da busca"
-         Top             =   360
-         Width           =   5445
       End
    End
 End

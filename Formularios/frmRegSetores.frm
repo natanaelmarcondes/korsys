@@ -189,6 +189,74 @@ Begin VB.Form frmRegSetores
       AccessibleValue =   ""
       AccessibleRole  =   24
    End
+   Begin VB.Frame fraBusca 
+      Caption         =   "Registro"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H000000FF&
+      Height          =   840
+      Left            =   240
+      TabIndex        =   18
+      Top             =   150
+      Width           =   7770
+      Begin VB.ComboBox cboOpcoes 
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   315
+         Left            =   210
+         Style           =   2  'Dropdown List
+         TabIndex        =   10
+         Top             =   330
+         Width           =   1380
+      End
+      Begin VB.CommandButton cmdBuscar 
+         Caption         =   "Buscar"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   375
+         Left            =   6750
+         TabIndex        =   12
+         Top             =   240
+         Width           =   915
+      End
+      Begin VB.TextBox txtBuscar 
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   330
+         Left            =   1755
+         TabIndex        =   11
+         Top             =   300
+         Width           =   4815
+      End
+   End
    Begin VB.Frame fraIncluir 
       Caption         =   "Registro"
       BeginProperty Font 
@@ -345,74 +413,6 @@ Begin VB.Form frmRegSetores
          Width           =   150
       End
    End
-   Begin VB.Frame fraBusca 
-      Caption         =   "Registro"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H000000FF&
-      Height          =   840
-      Left            =   240
-      TabIndex        =   18
-      Top             =   150
-      Width           =   7770
-      Begin VB.ComboBox cboOpcoes 
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   315
-         Left            =   210
-         Style           =   2  'Dropdown List
-         TabIndex        =   10
-         Top             =   330
-         Width           =   1380
-      End
-      Begin VB.CommandButton cmdBuscar 
-         Caption         =   "Buscar"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   375
-         Left            =   6735
-         TabIndex        =   12
-         Top             =   255
-         Width           =   915
-      End
-      Begin VB.TextBox txtBuscar 
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   330
-         Left            =   1755
-         TabIndex        =   11
-         Top             =   300
-         Width           =   4815
-      End
-   End
 End
 Attribute VB_Name = "frmRegSetores"
 Attribute VB_GlobalNameSpace = False
@@ -453,6 +453,12 @@ Private Sub cmdAtualizar_Click()
     
 End Sub
 
+Private Sub cmdBuscar_Click()
+    
+    MontaGrid
+    ListarSetores
+End Sub
+
 Private Sub cmdIncluir_Click()
     
     Me.Caption = "Cadastro de Setores" & " - Incluindo"
@@ -478,8 +484,8 @@ Private Sub Form_Load()
     
     MontaGrid
     CampoPesquisa True
-    ListarSetores
     ComboFill
+    ListarSetores
     
 End Sub
 
@@ -539,32 +545,37 @@ Private Sub ListarSetores()
     Dim rs As ADODB.Recordset
     Dim strSQL As String
     
+    'Abre conexao
     If AbreConexao = False Then
         Exit Sub
     End If
     
+    'Setya o recordset
     Set rs = New ADODB.Recordset
     
+    'mosta o select
     strSQL = ""
-    strSQL = "select id,nome,descricao,ativo "
+    strSQL = "select set_id,set_nome,set_descricao,set_status "
     strSQL = strSQL & "from setores "
     strSQL = strSQL & "where "
     
+    'seleciona opções de pesquisa
     Select Case cboOpcoes.Text
         
         Case "Id"
-            strSQL = strSQL & "id like '%"
+            strSQL = strSQL & "set_id like '%"
         Case "Nome"
-            strSQL = strSQL & "Nome like '%"
+            strSQL = strSQL & "set_nome like '%"
     End Select
     
     strSQL = strSQL & txtBuscar.Text
     strSQL = strSQL & "%'"
-   
+      
     
-    
+    'abre o recordset
     rs.Open strSQL, cn
     
+    'verifica se retornou
     If rs.EOF Then
         rs.Close
         Set rs = Nothing
@@ -579,16 +590,16 @@ Private Sub ListarSetores()
             grdSetores.Rows = grdSetores.Rows + 1
             lng_Linha = grdSetores.Rows - 1
         
-            grdSetores.TextMatrix(lng_Linha, 0) = IIf(IsNull(rs!id), "", rs!id)
-            grdSetores.TextMatrix(lng_Linha, 1) = IIf(IsNull(rs!Nome), "", rs!Nome)
-            grdSetores.TextMatrix(lng_Linha, 2) = IIf(IsNull(rs!Descricao), "", rs!Descricao)
+            grdSetores.TextMatrix(lng_Linha, 0) = IIf(IsNull(rs!set_id), "", rs!set_id)
+            grdSetores.TextMatrix(lng_Linha, 1) = IIf(IsNull(rs!set_nome), "", rs!set_nome)
+            grdSetores.TextMatrix(lng_Linha, 2) = IIf(IsNull(rs!set_descricao), "", rs!set_descricao)
             'tratamento null para ativo/inativo
-            If IsNull(rs!Ativo) Then
+            If IsNull(rs!set_status) Then
                 grdSetores.TextMatrix(lng_Linha, 3) = ""
-                ElseIf rs!Ativo = 1 Then
-                    grdSetores.TextMatrix(lng_Linha, 3) = "ATIVO"
-                Else
-                    grdSetores.TextMatrix(lng_Linha, 3) = "INATIVO"
+            ElseIf rs!set_status = "A" Then
+                grdSetores.TextMatrix(lng_Linha, 3) = "ATIVO"
+            Else
+                grdSetores.TextMatrix(lng_Linha, 3) = "INATIVO"
             End If
 
                     
