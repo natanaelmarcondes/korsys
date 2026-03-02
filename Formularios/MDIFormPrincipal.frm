@@ -103,12 +103,12 @@ Begin VB.MDIForm MDIFormPrincipal
          BeginProperty Panel2 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   6
             Alignment       =   2
-            TextSave        =   "09/02/2026"
+            TextSave        =   "20/02/2026"
          EndProperty
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             Alignment       =   2
-            TextSave        =   "18:43"
+            TextSave        =   "01:21"
          EndProperty
          BeginProperty Panel4 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   1
@@ -137,6 +137,9 @@ Begin VB.MDIForm MDIFormPrincipal
    End
    Begin VB.Menu mnuRelatorios 
       Caption         =   "Relatórios"
+      Begin VB.Menu RegSetores 
+         Caption         =   "Registro de Setores"
+      End
       Begin VB.Menu mnuUsuarios 
          Caption         =   "Usuários"
       End
@@ -245,5 +248,11 @@ End Sub
 Private Sub mnuUsuarios_Click()
     
     frmRelUsuarios.Show
+    
+End Sub
+
+Private Sub RegSetores_Click()
+    
+    frmRegSetores.Show
     
 End Sub

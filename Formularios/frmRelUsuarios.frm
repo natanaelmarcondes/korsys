@@ -3,8 +3,8 @@ Object = "{1C0489F8-9EFD-423D-887A-315387F18C8F}#1.0#0"; "vsflex8l.ocx"
 Begin VB.Form frmRelUsuarios 
    Caption         =   "Cadastro de Usuários"
    ClientHeight    =   5415
-   ClientLeft      =   60
-   ClientTop       =   405
+   ClientLeft      =   8730
+   ClientTop       =   5460
    ClientWidth     =   10545
    LinkTopic       =   "Form1"
    MDIChild        =   -1  'True
@@ -39,7 +39,7 @@ Begin VB.Form frmRelUsuarios
          Strikethrough   =   0   'False
       EndProperty
       Height          =   540
-      Left            =   3435
+      Left            =   3420
       TabIndex        =   21
       Top             =   4695
       Width           =   1500
@@ -97,6 +97,15 @@ Begin VB.Form frmRelUsuarios
    End
    Begin VB.CommandButton cmdSair 
       Caption         =   "Sair"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   540
       Left            =   8265
       TabIndex        =   10
@@ -115,7 +124,7 @@ Begin VB.Form frmRelUsuarios
       BorderStyle     =   1
       Enabled         =   -1  'True
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "MS Sans Serif"
+         Name            =   "Tahoma"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -196,57 +205,6 @@ Begin VB.Form frmRelUsuarios
       AccessibleDescription=   ""
       AccessibleValue =   ""
       AccessibleRole  =   24
-   End
-   Begin VB.Frame fraPesquisa 
-      Caption         =   "Pesquisa"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H000000FF&
-      Height          =   825
-      Left            =   255
-      TabIndex        =   11
-      Top             =   30
-      Width           =   10110
-      Begin VB.CommandButton cmdListar 
-         Caption         =   "Listar"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   315
-         Left            =   8280
-         TabIndex        =   23
-         Top             =   360
-         Width           =   1110
-      End
-      Begin VB.ComboBox cboCampos 
-         Height          =   315
-         Left            =   225
-         Style           =   2  'Dropdown List
-         TabIndex        =   0
-         Top             =   360
-         Width           =   2220
-      End
-      Begin VB.TextBox txtBusca 
-         Height          =   315
-         Left            =   2550
-         TabIndex        =   1
-         ToolTipText     =   "Digite o nome da busca"
-         Top             =   360
-         Width           =   5445
-      End
    End
    Begin VB.Frame fraUsuario 
       Caption         =   "Usuário"
@@ -438,6 +396,66 @@ Begin VB.Form frmRelUsuarios
          Width           =   150
       End
    End
+   Begin VB.Frame fraPesquisa 
+      Caption         =   "Pesquisa"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H000000FF&
+      Height          =   825
+      Left            =   255
+      TabIndex        =   11
+      Top             =   30
+      Width           =   10110
+      Begin VB.CommandButton cmdListar 
+         Caption         =   "Listar"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   315
+         Left            =   8280
+         TabIndex        =   23
+         Top             =   360
+         Width           =   1110
+      End
+      Begin VB.ComboBox cboCampos 
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   315
+         Left            =   225
+         Style           =   2  'Dropdown List
+         TabIndex        =   0
+         Top             =   360
+         Width           =   2220
+      End
+      Begin VB.TextBox txtBusca 
+         Height          =   315
+         Left            =   2550
+         TabIndex        =   1
+         ToolTipText     =   "Digite o nome da busca"
+         Top             =   360
+         Width           =   5445
+      End
+   End
 End
 Attribute VB_Name = "frmRelUsuarios"
 Attribute VB_GlobalNameSpace = False
@@ -511,7 +529,7 @@ Private Sub ListarUsuarios()
             grdUsuarios.TextMatrix(lng_Linha, 3) = IIf(IsNull(rs!Senha), "", rs!Senha)
             grdUsuarios.TextMatrix(lng_Linha, 4) = IIf(IsNull(rs!Nivel), "", rs!Nivel)
             grdUsuarios.TextMatrix(lng_Linha, 5) = IIf(IIf(IsNull(rs!Ativo), "", rs!Ativo), "ATIVO", "INATIVO")
-                                    
+            
             grdUsuarios.TextMatrix(lng_Linha, 5) = IIf(rs!Ativo = 1, "ATIVO", "INATIVO")
             
             
@@ -561,7 +579,7 @@ Private Sub cmdAceitar_Click()
         Exit Sub
     End If
     
-    strAlt = "update usuarios set nome = '" & txtNome.Text & "', email = '" & txtEmail.Text & "',senha = '" & txtSenha.Text & "',nivel = '" & cboNivel.Text & "',ativo = " & chkInativo.Value & " Where id = " & txtId.Text & ""
+    strAlt = "update usuarios set nome = '" & txtNome.Text & "', email = '" & txtEmail.Text & "',senha = '" & txtSenha.Text & "',nivel = '" & cboNivel.Text & "',ativo = " & chkInativo.Value & " Where id = " & txtID.Text & ""
     strSQL = "insert into usuarios (nome, email, senha, nivel, ativo) values ('" & txtNome.Text & "','" & txtEmail.Text & "','" & txtSenha.Text & "','" & cboNivel.Text & "', " & IIf(chkInativo.Value = 1, 0, 1) & ")"
         
     
@@ -609,7 +627,7 @@ Private Sub cmdDeletar_Click()
         Exit Sub
     End If
     
-    strSQL = "delete from usuario where id  = " & txtId.Text & ""
+    strSQL = "delete from usuario where id  = " & txtID.Text & ""
     
     cn.Execute strSQL
     
@@ -744,7 +762,7 @@ End Sub
 
 Private Sub LimpaCampos()
     
-    txtId.Text = ""
+    txtID.Text = ""
     txtNome.Text = ""
     txtEmail.Text = ""
     txtSenha.Text = ""
@@ -752,6 +770,7 @@ Private Sub LimpaCampos()
     
     
 End Sub
+
 
 Private Sub grdUsuarios_DblClick()
     
@@ -764,7 +783,7 @@ Private Sub grdUsuarios_DblClick()
         Exit Sub
     End If
 
-    txtId.Text = grdUsuarios.TextMatrix(WLLng_Row, eUsuarios.colId)
+    txtID.Text = grdUsuarios.TextMatrix(WLLng_Row, eUsuarios.colId)
     txtNome.Text = grdUsuarios.TextMatrix(WLLng_Row, eUsuarios.colNome)
     txtEmail.Text = grdUsuarios.TextMatrix(WLLng_Row, eUsuarios.colEmail)
     txtSenha.Text = grdUsuarios.TextMatrix(WLLng_Row, eUsuarios.colSenha)
@@ -785,7 +804,7 @@ Private Function ValidaCampos() As Boolean
     ValidaCampos = False
     
     If bolAltera = True Then
-        If txtId.Text = "" Then
+        If txtID.Text = "" Then
             MsgBox "Selecione um usuário", vbInformation, "Verifique"
             Exit Function
         End If
