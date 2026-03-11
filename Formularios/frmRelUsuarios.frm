@@ -258,6 +258,15 @@ Begin VB.Form frmRelUsuarios
          Width           =   2220
       End
       Begin VB.TextBox txtBusca 
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   315
          Left            =   2550
          TabIndex        =   1
@@ -319,6 +328,15 @@ Begin VB.Form frmRelUsuarios
          Width           =   1080
       End
       Begin VB.TextBox txtSenha 
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   300
          Left            =   4665
          TabIndex        =   5
@@ -326,6 +344,15 @@ Begin VB.Form frmRelUsuarios
          Width           =   1800
       End
       Begin VB.TextBox txtEmail 
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   300
          Left            =   2760
          TabIndex        =   4
@@ -333,6 +360,15 @@ Begin VB.Form frmRelUsuarios
          Width           =   1770
       End
       Begin VB.TextBox txtNome 
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   315
          Left            =   945
          TabIndex        =   3
@@ -627,7 +663,7 @@ Private Sub cmdDeletar_Click()
         Exit Sub
     End If
     
-    strSQL = "delete from usuario where id  = " & txtID.Text & ""
+    strSQL = "delete from usuarios where id = " & txtID.Text & ""
     
     cn.Execute strSQL
     
@@ -721,7 +757,7 @@ Private Sub MontaGrid()
         .ColWidth(eUsuarios.colEmail) = 2000
         .ColWidth(eUsuarios.colSenha) = 1100
         .ColWidth(eUsuarios.colNivel) = 900
-        .ColWidth(eUsuarios.colAtivo) = 500
+        .ColWidth(eUsuarios.colAtivo) = 700
         
     End With
     
@@ -775,6 +811,10 @@ End Sub
 Private Sub grdUsuarios_DblClick()
     
     Dim WLLng_Row As Long
+    
+    CampoPesquisa False
+    bolAltera = True
+    Me.Caption = "Cadastro de Usuários" & " - Alterando"
 
     ' Linha atual clicada
     WLLng_Row = grdUsuarios.Row

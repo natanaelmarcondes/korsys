@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "mscomctl.ocx"
 Begin VB.MDIForm MDIFormPrincipal 
    BackColor       =   &H8000000C&
    Caption         =   "KorSys"
@@ -103,12 +103,12 @@ Begin VB.MDIForm MDIFormPrincipal
          BeginProperty Panel2 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   6
             Alignment       =   2
-            TextSave        =   "20/02/2026"
+            TextSave        =   "03/03/2026"
          EndProperty
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             Alignment       =   2
-            TextSave        =   "01:21"
+            TextSave        =   "17:33"
          EndProperty
          BeginProperty Panel4 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   1
@@ -169,7 +169,7 @@ Begin VB.MDIForm MDIFormPrincipal
       End
    End
    Begin VB.Menu mnuSobre 
-      Caption         =   "Sôbre"
+      Caption         =   "Sobre"
       Begin VB.Menu mnuTela 
          Caption         =   "Tela"
       End

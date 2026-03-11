@@ -370,3 +370,66 @@
 02-03-2026 19:22:58 - Logado
 02-03-2026 19:37:53 - Iniciado
 02-03-2026 19:37:58 - Logado
+02-03-2026 19:44:49 - Iniciado
+02-03-2026 19:44:53 - Logado
+02-03-2026 20:06:35 - Iniciado
+02-03-2026 20:06:38 - Logado
+02-03-2026 20:09:38 - Iniciado
+02-03-2026 20:09:41 - Logado
+02-03-2026 20:34:02 - Iniciado
+02-03-2026 20:34:05 - Logado
+02-03-2026 20:41:22 - Iniciado
+02-03-2026 20:41:46 - Iniciado
+02-03-2026 20:41:51 - Logado
+02-03-2026 20:44:26 - Iniciado
+02-03-2026 20:44:29 - Logado
+02-03-2026 20:45:55 - Iniciado
+02-03-2026 20:45:57 - Logado
+02-03-2026 20:47:04 - Iniciado
+02-03-2026 20:51:29 - Iniciado
+02-03-2026 20:51:32 - Logado
+02-03-2026 20:57:58 - Iniciado
+02-03-2026 20:58:06 - Logado
+02-03-2026 21:55:14 - Iniciado
+02-03-2026 21:55:17 - Logado
+02-03-2026 21:57:21 - Iniciado
+02-03-2026 21:57:24 - Logado
+02-03-2026 21:57:54 - Iniciado
+02-03-2026 21:57:56 - Logado
+02-03-2026 22:15:35 - Iniciado
+02-03-2026 22:20:01 - Iniciado
+02-03-2026 22:20:04 - Logado
+02-03-2026 22:20:55 - Iniciado
+02-03-2026 22:20:59 - Logado
+02-03-2026 22:41:50 - Iniciado
+02-03-2026 22:42:00 - Iniciado
+02-03-2026 22:42:05 - Iniciado
+02-03-2026 22:44:50 - Iniciado
+02-03-2026 22:44:53 - Logado
+02-03-2026 22:49:53 - Iniciado
+02-03-2026 22:49:56 - Logado
+03-03-2026 01:02:23 - Iniciado
+03-03-2026 01:02:28 - Logado
+03-03-2026 01:03:09 - Iniciado
+03-03-2026 01:03:16 - Logado
+03-03-2026 01:17:10 - Iniciado
+03-03-2026 01:17:13 - Logado
+03-03-2026 01:18:04 - Iniciado
+03-03-2026 01:18:07 - Logado
+03-03-2026 04:14:32 - Iniciado
+03-03-2026 04:14:36 - Logado
+03-03-2026 04:18:12 - Iniciado
+03-03-2026 04:18:16 - Logado
+03-03-2026 04:19:28 - Iniciado
+03-03-2026 04:19:31 - Logado
+03-03-2026 17:28:18 - Iniciado
+03-03-2026 17:28:21 - Logado
+03-03-2026 17:31:42 - Entrei na tela de Leitor de Arquivo
+03-03-2026 17:31:42 - Ativei a tela de leitor de arquivo
+03-03-2026 17:32:19 - Iniciado
+03-03-2026 17:32:22 - Logado
+03-03-2026 17:32:25 - Entrei na tela de Leitor de Arquivo
+03-03-2026 17:32:25 - Ativei a tela de leitor de arquivo
+03-03-2026 17:32:27 - Entrei na tela de Leitor de Arquivo
+03-03-2026 17:32:27 - Ativei a tela de leitor de arquivo
+03-03-2026 17:32:28 - Abrindo bloco de anotações
